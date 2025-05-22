@@ -20,7 +20,9 @@ async function carregarCards(){
   
   //3 Injeta cõdigo HTML dentro da div app
   app.innerHTML = `
+  <header>
     <h1>Projetos Open Source:</h1>
+  </header>
     <div id='cards' class= 'cards'></div>
   `
   //4 Aponta a const cardsContainer para a div cards
@@ -33,11 +35,23 @@ async function carregarCards(){
     
     //7 Adiciona conteudo dentro da div criada
     cardDiv.innerHTML = `
-      <div>${card.titulo}</div>
-      <div>${card.descricao}</div>
-      <div>${card.tecnologias}</div>
-      <div>Ver Projeto</div>
+      <div class="card-imagem" style="background-color: ${card.cor};"><img src="/${card.icone}"></div>
+      <div class="titulo"><h3>${card.titulo}</h3></div>
+      <div class="card-texto">${card.descricao}</div>
+      <div class="linguagens-card"></div>
+      <div class="botao-projeto">
+        <a href="#" class="ver-projeto">Ver Projeto</a>
+      </div>
       `
+
+    const linguagensContainer = cardDiv.querySelector('.linguagens-card')!;
+    card.tecnologias.forEach(linguagem => {
+      const p = document.createElement('p');
+      p.className = 'linguagem'; // <- Aqui aplica o CSS
+      p.textContent = linguagem;
+      linguagensContainer.appendChild(p);
+    })
+
     //8 Coloca a div criada (cardDiv) dentro da div Cards
     cardsContainer.appendChild(cardDiv)
   })
@@ -46,4 +60,3 @@ async function carregarCards(){
 
 carregarCards()
 
-app.innerHTML = "<h1>Olá Mundo da Web</h1>"
