@@ -1,4 +1,4 @@
-import './style.css'
+import './style.css' 
 
 interface Card {
   id: number,
@@ -21,10 +21,13 @@ async function carregarCards(){
   //3 Injeta cõdigo HTML dentro da div app
   app.innerHTML = `
   <header>
-    <h1>Projetos Open Source:</h1>
+    <h1>Projetos Open Source</h1>
   </header>
-    <div id='cards' class= 'cards'></div>
-  `
+  <input type="text" id="barra-pesquisa" class="pesquisa" placeholder="Buscar projeto...">
+
+    <div id='cards' class='card-galeria'></div>
+
+`
   //4 Aponta a const cardsContainer para a div cards
   const cardsContainer = document.querySelector<HTMLDivElement>('#cards')!
   
@@ -33,6 +36,8 @@ async function carregarCards(){
     //6 Cria um Elemento Div
     const cardDiv = document.createElement('div')
     
+    cardDiv.classList.add('card')
+
     //7 Adiciona conteudo dentro da div criada
     cardDiv.innerHTML = `
       <div class="card-imagem" style="background-color: ${card.cor};"><img src="/${card.icone}"></div>
@@ -47,7 +52,7 @@ async function carregarCards(){
     const linguagensContainer = cardDiv.querySelector('.linguagens-card')!;
     card.tecnologias.forEach(linguagem => {
       const p = document.createElement('p');
-      p.className = 'linguagem'; // <- Aqui aplica o CSS
+      p.className = 'linguagem'; 
       p.textContent = linguagem;
       linguagensContainer.appendChild(p);
     })

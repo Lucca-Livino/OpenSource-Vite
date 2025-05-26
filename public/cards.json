@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "icone": "chronium.png",
+        "icone": "chromium.png",
         "cor": "#B6D5FF",
         "titulo": "Chronium",
         "descricao": "Projeto de navegador de código aberto que serve de base para o Google Chrome e outros navegadores modernos.",
